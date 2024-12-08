@@ -1,88 +1,46 @@
-let currentLevel = 0;
-let score = 0;
+const puzzle = document.getElementById("puzzle");
+const resetButton = document.getElementById("reset");
 
-const questions = [
-    {
-        question: "Какой праздник мы отмечаем 31 декабря?",
-        answers: ["Новый год", "Рождество", "Хэллоуин"],
-        correct: 0 // индекс правильного ответа
-    },
-    {
-        question: "Какой символ Нового года?",
-        answers: ["Снеговик", "Ёлка", "Дед Мороз"],
-        correct: 1
-    },
-    {
-        question: "Какой цвет чаще всего ассоциируется с Новым годом?",
-        answers: ["Красный", "Зелёный", "Синий"],
-        correct: 1
+let tiles = Array.from(Array(9).keys()).map(i => i + 1);
+tiles[tiles.length - 1] = ''; // Последняя плитка пустая
+
+function shuffle(array) {
+    for (let i = array.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [array[i], array[j]] = [array[j], array[i]];
     }
-];
-
-function startGame() {
-    currentLevel = 0;
-    score = 0;
-    document.getElementById('score').innerText = score;
-    document.getElementById('start-btn').classList.add('hidden');
-    document.getElementById('game').classList.remove('hidden');
-    document.getElementById('level-title').innerText = Уровень ${currentLevel + 1};
-    showQuestion();
 }
 
-function showQuestion() {
-    const questionContainer = document.getElementById('question-container');
-    questionContainer.innerHTML = '';
-
-    const question = questions[currentLevel];
-
-    const questionElement = document.createElement('p');
-    questionElement.innerText = question.question;
-    questionContainer.appendChild(questionElement);
-
-    question.answers.forEach((answer, index) => {
-        const button = document.createElement('button');
-        button.innerText = answer;
-        button.onclick = () => checkAnswer(index);
-        questionContainer.appendChild(button);
+function createPuzzle() {
+    puzzle.innerHTML = '';
+    tiles.forEach((tile, index) => {
+        const tileDiv = document.createElement("div");
+        tileDiv.classList.add("tile");
+        if (tile) {
+            tileDiv.textContent = tile;
+            tileDiv.addEventListener("click", () => moveTile(index));
+        } else {
+            tileDiv.classList.add("empty");
+        }
+        puzzle.appendChild(tileDiv);
     });
 }
 
-function checkAnswer(selectedIndex) {
-    const question = questions[currentLevel];
-    if (selectedIndex === question.correct) {
-        score++;
-        alert("Правильно!");
-    } else {
-        alert("Неправильно! Правильный ответ: " + question.answers[question.correct]);
-    }
-    document.getElementById('next-button').classList.remove('hidden');
-}
-
-function nextLevel() {
-    currentLevel++;
-    if (currentLevel < questions.length) {
-        document.getElementById('level-title').innerText = Уровень ${currentLevel + 1};
-        showQuestion();
-        document.getElementById('next-button').classList.add('hidden');
-    } else {
-        endGame();
+function moveTile(index) {
+    const emptyIndex = tiles.indexOf('');
+    const validMoves = [emptyIndex - 1, emptyIndex + 1, emptyIndex - 3, emptyIndex + 3]; // Соседние плитки
+    if (validMoves.includes(index)) {
+        [tiles[emptyIndex], tiles[index]] = [tiles[index], tiles[emptyIndex]];
+        createPuzzle();
     }
 }
 
-function endGame() {
-    document.getElementById('game').classList.add('hidden');
-    document.getElementById('score-board').classList.remove('hidden');
-    document.getElementById('score').innerText = score;
-}
+resetButton.addEventListener("click", () => {
+    tiles = Array.from(Array(9).keys()).map(i => i + 1);
+    tiles[tiles.length - 1] = '';
+    shuffle(tiles);
+    createPuzzle();
+});
 
-function restartGame() {
-    score = 0;
-    currentLevel = 0;
-    document.getElementById('score-board').classList.add('hidden');
-    document.getElementById('start-btn').classList.remove('hidden');
-}
-
-function showInstructions() {
-    alert("В этой игре вам предстоит ответить на вопросы о Новом годе. " +
-          "За правильные ответы вы получите баллы! Удачи!");
-}
+shuffle(tiles); // Перемешивание плиток
+createPuzzle(); // Создание головоломки
