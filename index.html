@@ -3,19 +3,25 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Игровая Платформа</title>
+    <title>Новогодняя Игра</title>
     <link rel="stylesheet" href="styles.css">
-    <script src="script.js" defer></script>
 </head>
 <body>
-    <h1>Приключение в игровом мире</h1>
-    <div id="game"></div>
-    <div id="instructions">
-        <h2>Инструкции</h2>
-        <p>Постарайтесь решить задачу на каждом уровне, чтобы перейти на следующий.</p>
-        <button onclick="hideInstructions()">Скрыть инструкции</button>
+    <div class="container">
+        <header>
+            <h1>Новогодняя Игра</h1>
+            <p>Проверь свои знания о Новом годе!</p>
+        </header>
+        <div id="instructions">
+            <h2>Инструкции</h2>
+            <p>Отвечайте на вопросы, выбирая правильный вариант ответа. Удачи!</p>
+            <button onclick="startGame()">Начать игру</button>
+        </div>
+        <div id="game"></div>
+        <div id="score" style="display: none;">
+            <h2>Ваш счет: <span id="scoreValue">0</span></h2>
+        </div>
     </div>
-    <button onclick="showInstructions()">Показать инструкции</button>
-    <button onclick="startGame()">Начать игру</button>
+    <script src="script.js"></script>
 </body>
 </html>
