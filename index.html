@@ -3,16 +3,57 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Новогодняя головоломка</title>
-    <link rel="stylesheet" href="styles.css">
+    <title>Санта и снежные головоломки</title>
+    <style>
+        body {
+            background-color: #f0f8ff;
+            font-family: 'Arial', sans-serif;
+            text-align: center;
+        }
+        #game {
+            border: 2px solid #ff0000;
+            background-color: #ffffff;
+            width: 400px;
+            height: 400px;
+            margin: 0 auto;
+            position: relative;
+        }
+    </style>
 </head>
 <body>
-    <div class="container">
-        <h1>❄️ Новогодняя головоломка 🎄</h1>
-        <p class="instructions">Переместите плитки, чтобы восстановить изображение!</p>
-        <div id="puzzle" class="puzzle"></div>
-        <button id="reset">Сбросить</button>
+    <h1>Санта и снежные головоломки</h1>
+    <div id="game">
+        <!-- Здесь будет происходить игра -->
     </div>
-    <script src="script.js"></script>
+    <button id="start-button">Начать игру</button>
+    <div id="instructions" style="display: none;">
+        <h2>Инструкция</h2>
+        <p>Помогите Деду Морозу собрать подарки и доставить их детям. Решайте головоломки, чтобы продвинуться к следующему уровню!</p>
+        <button onclick="startGame()">Играть!</button>
+    </div>
+
+    <script>
+        document.getElementById('start-button').onclick = function() {
+            this.style.display = 'none';
+            document.getElementById('instructions').style.display = 'block';
+        };
+
+        function startGame() {
+            document.getElementById('instructions').style.display = 'none';
+            // Здесь будет инициализация игры
+            initializeLevel(1);
+        }
+
+        function initializeLevel(level) {
+            const gameArea = document.getElementById('game');
+            gameArea.innerHTML = `<h2>Уровень ${level}</h2>`;
+            // Логика для каждого уровня
+            if (level === 1) {
+                gameArea.innerHTML += `<p>Соедините подарки с детьми!</p>`;
+                // Логика головоломки уровня 1
+            }
+            // Дополнительная логика для других уровней
+        }
+    </script>
 </body>
 </html>
