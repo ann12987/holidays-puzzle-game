@@ -1,52 +1,36 @@
 body {
-    background-image: url('https://example.com/your-background-image.jpg'); / Замените на ваше фоновое изображение /
-    background-size: cover;
-    background-position: center;
+    background-color: #f0f8ff;
     font-family: 'Arial', sans-serif;
-    color: #ffffff;
-}
-
-.container {
     text-align: center;
-    margin: 50px auto;
-    border: 2px solid #fff;
-    padding: 20px;
-    border-radius: 10px;
-    background-color: rgba(0, 0, 0, 0.7);
-    box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.5);
 }
 
-.instructions {
-    font-size: 18px;
-    margin-bottom: 20px;
+h1 {
+    color: #ff4500;
 }
 
-.puzzle {
-    display: grid;
-    grid-template-columns: repeat(3, 100px);
-    grid-template-rows: repeat(3, 100px);
-    gap: 5px;
-    margin: 20px auto;
-}
-
-.tile {
-    width: 100px;
-    height: 100px;
-    background-color: #ffeb3b;
+#game {
+    border: 2px solid #ff0000;
+    background-color: #ffffff;
+    width: 400px;
+    height: 400px;
+    margin: 0 auto;
+    position: relative;
     display: flex;
-    justify-content: center;
     align-items: center;
-    font-size: 24px;
-    border: 1px solid #fff;
+    justify-content: center;
+    transition: background-color 0.3s;
+}
+
+button {
+    background-color: #008cba;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    margin: 10px;
     cursor: pointer;
-    transition: transform 0.2s;
+    transition: background-color 0.3s;
 }
 
-.tile:hover {
-    transform: scale(1.05);
-}
-
-.tile.empty {
-    background-color: rgba(255, 255, 255, 0.5);
-    cursor: default;
+button:hover {
+    background-color: #005f75;
 }
