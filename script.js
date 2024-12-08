@@ -1,46 +1,42 @@
-const puzzle = document.getElementById("puzzle");
-const resetButton = document.getElementById("reset");
+let currentLevel = 0;
+const totalLevels = 3; // Переходите на другие уровни, изменяя это значение
 
-let tiles = Array.from(Array(9).keys()).map(i => i + 1);
-tiles[tiles.length - 1] = ''; // Последняя плитка пустая
+function startGame() {
+    currentLevel = 0; // Начнем с первого уровня
+    displayLevel();
+}
 
-function shuffle(array) {
-    for (let i = array.length - 1; i > 0; i--) {
-        const j = Math.floor(Math.random() * (i + 1));
-        [array[i], array[j]] = [array[j], array[i]];
+function displayLevel() {
+    const gameArea = document.getElementById("game");
+    gameArea.innerHTML = ''; // Очищаем игровую область
+
+    // В зависимости от уровня, будем отображать разные задачки
+    switch (currentLevel) {
+        case 0:
+            gameArea.innerHTML = '<h2>Уровень 1: Соберите подарки!</h2><button onclick="solveLevel(1)">Собрать</button>';
+            break;
+        case 1:
+            gameArea.innerHTML = '<h2>Уровень 2: Сбор снежинок!</h2><button onclick="solveLevel(2)">Собрать</button>';
+            break;
+        case 2:
+            gameArea.innerHTML = '<h2>Уровень 3: Украсьте елку!</h2><button onclick="solveLevel(3)">Украсить</button>';
+            break;
+        default:
+            gameArea.innerHTML = '<h2>Поздравляем! Вы прошли все уровни!</h2>';
+            break;
     }
 }
 
-function createPuzzle() {
-    puzzle.innerHTML = '';
-    tiles.forEach((tile, index) => {
-        const tileDiv = document.createElement("div");
-        tileDiv.classList.add("tile");
-        if (tile) {
-            tileDiv.textContent = tile;
-            tileDiv.addEventListener("click", () => moveTile(index));
-        } else {
-            tileDiv.classList.add("empty");
-        }
-        puzzle.appendChild(tileDiv);
-    });
+function solveLevel(level) {
+    // Проверяем, правильно ли решена головоломка (для примера просто переходим на следующий уровень)
+    currentLevel++;
+    displayLevel();
 }
 
-function moveTile(index) {
-    const emptyIndex = tiles.indexOf('');
-    const validMoves = [emptyIndex - 1, emptyIndex + 1, emptyIndex - 3, emptyIndex + 3]; // Соседние плитки
-    if (validMoves.includes(index)) {
-        [tiles[emptyIndex], tiles[index]] = [tiles[index], tiles[emptyIndex]];
-        createPuzzle();
-    }
+function showInstructions() {
+    document.getElementById("instructions").style.display = 'block';
 }
 
-resetButton.addEventListener("click", () => {
-    tiles = Array.from(Array(9).keys()).map(i => i + 1);
-    tiles[tiles.length - 1] = '';
-    shuffle(tiles);
-    createPuzzle();
-});
-
-shuffle(tiles); // Перемешивание плиток
-createPuzzle(); // Создание головоломки
+function hideInstructions() {
+    document.getElementById("instructions").style.display = 'none';
+}
