@@ -3,16 +3,25 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Новогодняя головоломка</title>
-    <link rel="stylesheet" href="styles.css">
+    <title>Новогодняя Головоломка</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <div class="container">
-        <h1>Новогодняя головоломка</h1>
-        <p class="instructions">Переместите плитки, чтобы восстановить изображение!</p>
-        <div id="puzzle" class="puzzle"></div>
-        <button id="reset">Сбросить</button>
+        <h1>Новогодняя Головоломка!</h1>
+        <p id="instructions"><a href="#" onclick="showInstructions()">Инструкции</a></p>
+        <div id="game" class="hidden">
+            <h2 id="level-title">Уровень 1</h2>
+            <div id="question-container"></div>
+            <button id="next-button" class="hidden" onclick="nextLevel()">Далее</button>
+        </div>
+        <div id="score-board" class="hidden">
+            <h2>Ваш результат: <span id="score"></span></h2>
+            <button onclick="restartGame()">Начать сначала</button>
+        </div>
+        <button id="start-btn" onclick="startGame()">Начать игру</button>
     </div>
+    
     <script src="script.js"></script>
 </body>
 </html>
