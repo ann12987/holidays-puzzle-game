@@ -1,23 +1,31 @@
 body {
-    background-color: #e0f7fa;
-    font-family: Arial, sans-serif;
+    background-image: url('https://example.com/your-background-image.jpg'); / Замените на ваше фоновое изображение /
+    background-size: cover;
+    background-position: center;
+    font-family: 'Arial', sans-serif;
+    color: #ffffff;
 }
 
 .container {
     text-align: center;
     margin: 50px auto;
-    border: 2px solid #009688;
+    border: 2px solid #fff;
     padding: 20px;
     border-radius: 10px;
-    background-color: white;
-    box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.2);
+    background-color: rgba(0, 0, 0, 0.7);
+    box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.5);
+}
+
+.instructions {
+    font-size: 18px;
+    margin-bottom: 20px;
 }
 
 .puzzle {
     display: grid;
     grid-template-columns: repeat(3, 100px);
     grid-template-rows: repeat(3, 100px);
-    gap: 2px;
+    gap: 5px;
     margin: 20px auto;
 }
 
@@ -29,11 +37,16 @@ body {
     justify-content: center;
     align-items: center;
     font-size: 24px;
-    border: 1px solid #009688;
+    border: 1px solid #fff;
     cursor: pointer;
+    transition: transform 0.2s;
+}
+
+.tile:hover {
+    transform: scale(1.05);
 }
 
 .tile.empty {
-    background-color: #cfd8dc;
+    background-color: rgba(255, 255, 255, 0.5);
     cursor: default;
 }
