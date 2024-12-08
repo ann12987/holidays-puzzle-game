@@ -1,117 +1,43 @@
 body {
-    background-color: #f0f8ff;
-    font-family: 'Arial', sans-serif;
-    text-align: center;
-}
-
-h1 {
-    color: #ff4500;
-}
-
-#game {
-    border: 2px solid #ff0000;
-    background-color: #ffffff;
-    width: 400px;
-    height: 400px;
-    margin: 0 auto;
-    position: relative;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    transition: background-color 0.3s;
-}
-
-button {
-    background-color: #008cba;
+    font-family: Arial, sans-serif;
+    background: url('https://example.com/winter_background.jpg') no-repeat center center fixed; /* Замените на реальный URL фонового изображения */
+    background-size: cover;
     color: white;
-    border: none;
-    padding: 10px 20px;
-    margin: 10px;
-    cursor: pointer;
-    transition: background-color 0.3s;
-}
-
-button:hover {
-    background-color: #005f75;
-}
-body {
-    font-family: 'Arial', sans-serif;
-    background-color: #f0f8ff;
-    color: #333;
-}
-
-h1 {
     text-align: center;
-    color: #0056ff;
 }
 
-#game {
-    text-align: center;
-    margin: 20px auto;
+.container {
+    margin: auto;
     padding: 20px;
-    border: 2px solid #0056ff;
-    border-radius: 10px;
-    background-color: #e9f5ff;
-    width: 80%;
+    background-color: rgba(0, 0, 0, 0.8);
+    border-radius: 5px;
     max-width: 600px;
 }
 
+h1 {
+    font-size: 2.5em;
+}
+
+h2 {
+    font-size: 1.5em;
+}
+
 button {
-    background-color: #0056ff;
-    color: white;
     padding: 10px 20px;
+    margin-top: 10px;
+    font-size: 1em;
+    color: white;
+    background-color: #28a745;
     border: none;
     border-radius: 5px;
     cursor: pointer;
-    margin: 10px;
     transition: background-color 0.3s;
 }
 
 button:hover {
-    background-color: #003da8;
+    background-color: #218838;
 }
 
-#instructions {
-    margin: 20px auto;
-    padding: 20px;
-    border: 1px solid #0056ff;
-    border-radius: 10px;
-    background-color: #e9f5ff;
-    width: 80%;
-    max-width: 600px;
-}
-#game {
-    width: 80%;
-    margin: 0 auto;
-    padding: 20px;
-    border: 1px solid #ccc;
-    border-radius: 10px;
-    background-color: #fff;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    text-align: center;
-}
-
-button {
-    background-color: #0056ff;
-    color: white;
-    border: none;
-    border-radius: 5px;
-    padding: 10px 20px;
-    cursor: pointer;
-    font-size: 16px;
-    margin: 10px;
-    transition: background-color 0.3s;
-}
-
-button:hover {
-    background-color: #0042cc;
-}
-
-#instructions {
-    margin-top: 20px;
-    padding: 10px;
-    border: 1px solid #0056ff;
-    background-color: #e9f5ff;
-    border-radius: 5px;
-    display: none; /* Скрыть инструкции по умолчанию */
+.question {
+    margin: 20px 0;
 }
